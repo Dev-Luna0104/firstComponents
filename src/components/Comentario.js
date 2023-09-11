@@ -1,12 +1,13 @@
 import React from "react";
 import './Comentario.css';
 
-const Comentario = (    ) =>(
+const Comentario = (props) =>(
     <div className="Container-comentario">
-        <h2 className="C01">João:</h2>
-        <h3 className="C01">Olá, tudo bem?</h3>
+        <h2>{props.name}</h2>
+        <p>{props.email}</p>
+        <p>{props.children}</p>
+        <p>{props.date.toString()}</p>
     </div>
 )
 
 export default Comentario 
-console.log(Comentario())
