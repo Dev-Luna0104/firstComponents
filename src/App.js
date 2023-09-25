@@ -1,73 +1,137 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';'
 import './App.css';
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
+ 
 import Comentario from './components/Comentario';
 
  
 class App extends Component {
 
   state = {
-    comentario: [
+    
+    comentarios: [
 
       {
-        name:'matheus luna',
+        nome:'matheus luna',
         email:'matheusluna@email.com',
-        date:new Date(2004, 9, 18),
+        data:new Date(2004, 9, 18),
         mensagem:'bom dia'
       },
 
       {
-        name:'maria eduarda',
+        nome:'maria eduarda',
         email:'mariaeduarda@email.com',
-        date:new Date(2005, 4, 1),
+        data:new Date(2005, 4, 1),
         mensagem:'bom dia'
       },
 
-    ]
+    ],
+    adicionarComentario:{
+      
+      nome:'',
+      email:'',
+      mensagem:'',
+      data: new Date()
+
+    }
   }
 
-  addComment = () => {
-    console.log ('novo comentario')
+  adicionarComentario = evento => {
+    evento.preventDefault() //anulando um evento
+    console.log ('novo comentarios')
 
-    const newComment = {
-      name:'rafa',
+    const novoComentario = {
+      nome:'rafa',
       email:'rafa@email.com',
-      date:new Date(),
+      data:new Date(),
       mensagem:'tarde'
     }
 
+    
+    const adicionarComentario =  this.state.adicionarComentario
+    
     //   //quel comtrola a atualizaçao do estado tem que ser o react, ele faz isso quando acha que tem que atualizar assim retornando um novo Dom
     //   //entao para atualizar o estado
-    //   let lista = this.state.comentario
-    //   lista.push(newComment)
+    //   let lista = this.state.comentarios
+    //   lista.push(adicionarComentario)
     //   //setStation - ela é erdada de companents
     //   this.setState({Comentario: lista})
-
+    
     //uma forma melhor de escrever
-
+     
     this.setState({
-      comentario:[ ...this.state.comentario, newComment ]
+      comentarios:[...this.state.comentarios, adicionarComentario ]
     })
 
   }
 
+  digitaForm = (evento) => {
+    const {name, value} = evento.target;
+
+//ou assim
+
+    // const value = evento.target.value;
+    // const nome = evento.target.nome;
+    
+    this.setState({adicionarComentario: {...this.state.adicionarComentario , [name]: value }})
+  }
+
   render(){
     return (
-      <div className="App">
-          <h1>projeto</h1>
-          {this.state.comentario.map((comentario,indice) =>(
-            <Comentario 
-              key={indice}
-              name={comentario.name} 
-              email={comentario.email} 
-              date={comentario.date}
-              >
-                {comentario.mensagem}
-            </Comentario>
-            ))
-          }
-          <button onClick={this.addComment}>novo comentario</button>
+      <div className='App'>
+        <h1>Comentarios</h1>
+        {this.state.comentarios.map((comentarios,indice) =>(
+          <Comentario 
+            key={indice}
+            nome={comentarios.nome} 
+            email={comentarios.email} 
+            data={comentarios.data}
+            >
+              {comentarios.mensagem}
+          </Comentario>
+          ))
+        }
+
+        <form method='post' onSubmit={this.adicionarComentario}>
+          <h2>Adicionar comentário</h2>
+          <div>
+            <label>Nome</label>
+            <input 
+              type='text'   
+              id='nome'   
+              onChange={this.digitaForm}
+              value={this.state.adicionarComentario.nome}
+              name='nome' 
+              placeholder='Seu nome'>
+            </input>
+          </div>
+
+          <div>
+            <label>Email</label>
+            <input 
+              type='email' 
+              onChange={this.digitaForm}
+              id='email' 
+              value={this.state.adicionarComentario.email}
+              name='email' 
+              placeholder='Seu email'>
+            </input>
+          </div>
+
+          <div>
+            <textarea 
+              name='mensagem'   
+              onChange={this.digitaForm}
+              id='mensagem' 
+              value={this.state.adicionarComentario.mensagem}
+              rows='4'
+              placeholder='\...'/>
+          </div>
+
+          <button type='submit'>enviar</button>
+          
+        </form>
+
       </div>
     );
     
@@ -80,10 +144,10 @@ class App extends Component {
 //     return (
 //     <div className="App">
 //         <h1>projeto</h1>
-//         < Comentario name="Matheus" email="matheus@email.com" date={new Date(2004, 9, 18)}>
+//         < Comentario nome="Matheus" email="matheus@email.com" data={new Date(2004, 9, 18)}>
 //           Ola tudo bem?
 //         </Comentario>
-//         < Comentario name="Maria Eduarda" email="mariaeduarda@email.com" date={new Date(2023, 4, 1)}>
+//         < Comentario nome="Maria Eduarda" email="mariaeduarda@email.com" data={new Date(2023, 4, 1)}>
 //           Roi lorena né
 //         </Comentario>
 //     </div>
