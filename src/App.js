@@ -18,12 +18,6 @@ class App extends Component {
         mensagem:'bom dia'
       },
 
-      {
-        nome:'maria eduarda',
-        email:'mariaeduarda@email.com',
-        data:new Date(2005, 4, 1),
-        mensagem:'bom dia'
-      },
 
     ],
     adicionarComentario:{
@@ -40,12 +34,12 @@ class App extends Component {
     evento.preventDefault() //anulando um evento
     console.log ('novo comentarios')
 
-    const novoComentario = {
-      nome:'rafa',
-      email:'rafa@email.com',
-      data:new Date(),
-      mensagem:'tarde'
-    }
+    // const novoComentario = {
+    //   nome:'rafa',
+    //   email:'rafa@email.com',
+    //   data:new Date(),
+    //   mensagem:'tarde'
+    // }
 
     
     const adicionarComentario =  this.state.adicionarComentario
@@ -60,12 +54,21 @@ class App extends Component {
     //uma forma melhor de escrever
      
     this.setState({
-      comentarios:[...this.state.comentarios, adicionarComentario ]
+      comentarios: [...this.state.comentarios, adicionarComentario ],
+      adicionarComentario: {nome:"", email:"", mensagem:""},
+      
     })
 
   }
 
-  digitaForm = (evento) => {
+  removerComentario = comentario => {
+    let lista = this.state.comentarios;
+    lista = lista.filter( c => c !== comentario)
+
+    this.setState({ comentarios: lista })
+  }
+
+  digitaForm = (evento, indice) => {
     const {name, value} = evento.target;
 
 //ou assim
@@ -86,8 +89,9 @@ class App extends Component {
             nome={comentarios.nome} 
             email={comentarios.email} 
             data={comentarios.data}
-            >
-              {comentarios.mensagem}
+            onRemove={this.removerComentario.bind(this, comentarios)}>
+            {comentarios.mensagem}
+            
           </Comentario>
           ))
         }
