@@ -56,7 +56,12 @@ input {
 }
 
 textarea {
-border-radius: 7px;
+  width: 180px;
+  max-width: 350px;
+  height: 200px;
+  max-height: 350px;
+
+  border-radius: 7px;
   
 }
 

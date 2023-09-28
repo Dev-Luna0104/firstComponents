@@ -1,8 +1,9 @@
 // import logo from './logo.svg';'
-import './App.css';
 import React, { Component } from 'react';
- 
+
+import './App.css';
 import Comentario from './components/Comentario';
+import { formatRelative } from 'date-fns';
 
  
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
       {
         nome:'matheus luna',
         email:'matheusluna@email.com',
-        data:new Date(2004, 9, 18),
+        data:new Date(2004, 9, 18, 12,11, 0),
         mensagem:'bom dia'
       },
 
