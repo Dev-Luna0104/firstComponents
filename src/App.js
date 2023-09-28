@@ -83,7 +83,7 @@ class App extends Component {
     return (
       <div className='App'>
         <h1>Comentarios</h1>
-        {this.state.comentarios.map((comentarios,indice) =>(
+        {this.state.comentarios.map((comentarios,indice) => (
           <Comentario 
             key={indice}
             nome={comentarios.nome} 
@@ -96,10 +96,10 @@ class App extends Component {
           ))
         }
 
-        <form method='post' onSubmit={this.adicionarComentario}>
+        <form method='post' onSubmit={this.adicionarComentario} className='novo-comentario'>
           <h2>Adicionar comentário</h2>
           <div>
-            <label>Nome</label>
+            <label>Nome:</label>
             <input 
               type='text'   
               id='nome'   
@@ -110,8 +110,9 @@ class App extends Component {
             </input>
           </div>
 
+
           <div>
-            <label>Email</label>
+            <label>Email:</label>
             <input 
               type='email' 
               onChange={this.digitaForm}

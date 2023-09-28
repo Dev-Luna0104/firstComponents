@@ -1,5 +1,82 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f0f0f0;
+  height: 200vh;
+}
+
 .App {
   padding:0 30px ;
   
 }
 
+.novo-comentario {
+  width: 350px;
+  margin-bottom: 2rem;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow:0px 13px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .05) ;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  
+}
+
+.novo-comentario div {
+  display: flex;
+  column-gap: 5px;
+}
+
+.novo-comentario h2 {
+  
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+ label {
+  position: absolute;
+  left: 39px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+input {
+  border-radius: 7px;
+  padding: 5px;
+  width: 180px;
+  /* position:absolute;
+  left: 100px; */
+}
+
+textarea {
+border-radius: 7px;
+  
+}
+
+.novo-comentario  button {
+  width: 70px;
+  height: 25px;
+
+  padding: 2px 0;
+  color: #000;
+  background: none;
+  border: solid;
+  border-radius: 5px;
+  transition: 1000ms  cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.novo-comentario  button:hover {
+  color: #fff;
+  background-color: #050;
+  border: none;
+  border-radius: 15px;
+  transform: scale(1.2);
+
+}
